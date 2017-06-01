@@ -11,35 +11,36 @@
    border: 1px solid black;
 }   
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 </head>
 <body>
 
 <h1>Proba</h1>
 
+<p id="loc"></p>
 
-<div class="city">
-  <h2>Belgrade</h2>
-  <p>Belgrade is the capital of Serbia.</p>
-  <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-</div>
+<script>
+$(document).ready(function(){
 
-<div class="city">
-  <h2>Paris</h2>
-  <p>Paris is the capital of France.</p> 
-  <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
-</div>
 
-<div class="city">
-  <h2>Tokyo</h2>
-  <p>Tokyo is the capital of Japan.</p>
-  <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
-</div>
 
-<div class="city">
-  <h2>New York</h2>
-  <p>The City of New York is the most populous city in the United States.</p>
-  <p>New York is an important center for international diplomacy and has been described as the cultural and financial capital of the world.</p>
-</div>
+   $.getJSON('https://api.foursquare.com/v2/venues/explore?ll=44.8029982,20.495354199999998&section=coffee&radius=1000&openNow=1&sortByDistance=1%20&oauth_token=JDYNNCIGJB0ZBTYDH01PXUU332X01SMFVMPHTK3WGNPA4L3Q&v=20170601', function(data) {
+
+    for(index in data.response.groups[0].items) {
+
+  alert(data.response.groups[0].items[index].venue.price.message);
+    
+}
+  
+});
+
+});
+
+
+</script>
+
 
 </body>
 </html>
